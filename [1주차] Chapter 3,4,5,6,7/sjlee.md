@@ -323,8 +323,8 @@ BottomSheet라는 컴포넌트에는 연락처와 장바구니가 있다고 하�
 
 ```ts
 const BottomSheetMap = {
-  CONTACT: '010-xxxx-xxxx',
-  CART: 'taco',
+  CONTACT: {},
+  CART: {},
 };
 
 // BottomId는 "CONTACT" | "CART";' 유니온 타입
@@ -435,59 +435,6 @@ userRequestFunction<string, number>('baseURL', defaultHeader);
 ```
 
 이런식으로 사용하면 RequestData에는 string 타입이 ResponseData에는 number 타입이 들어가게 된다.
-
-## 제네릭 클래스
-
-제네릭 클래스는 외부에서 입력된 타입을 클래스 내부에 적용할 수 있는 클래스다.
-
-쉬운 설명을 위해 책에 있는 예제가 아닌 다른 코드로 설명을 진행한다.
-
-```ts
-class Pair<T, U> {
-  private first: T;
-  private second: U;
-
-  constructor(first: T, second: U) {
-    this.first = first;
-    this.second = second;
-  }
-
-  getFirst(): T {
-    return this.first;
-  }
-
-  getSecond(): U {
-    return this.second;
-  }
-
-  setFirst(value: T): void {
-    this.first = value;
-  }
-
-  setSecond(value: U): void {
-    this.second = value;
-  }
-}
-
-// Pair 클래스의 인스턴스 생성
-const numberAndStringPair = new Pair<number, string>(10, 'Hello');
-
-// 값 확인
-console.log(numberAndStringPair.getFirst()); // 출력: 10
-console.log(numberAndStringPair.getSecond()); // 출력: Hello
-
-// 새로운 값 설정
-numberAndStringPair.setFirst(20);
-numberAndStringPair.setSecond('World');
-
-// 변경된 값 확인
-console.log(numberAndStringPair.getFirst()); // 출력: 20
-console.log(numberAndStringPair.getSecond()); // 출력: World
-```
-
-Pair 클래스의 T와 U는 클래스의 내부에서 사용되는 타입이다. 이러한 제네릭 타입 매개변수들은 클래스가 사용될 때 실제 타입으로 대체된다.
-
-예를 들어, `Pair<number, string>`으로 인스턴스를 생성하면 `<T>`는 number로, `<U>`는 string으로 대체되어 클래스의 내부에서는 실제로 number와 string 타입을 다루는 것과 같은 효과를 얻는다.
 
 ## 제한된 제네릭
 
